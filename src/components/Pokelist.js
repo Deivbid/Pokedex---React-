@@ -3,7 +3,7 @@ import PokeCell from './Pokecell'
 import { PokeClasses } from './Pokeclasses';
 import './styles/Pokelist.css'
 
-const Pokelist = () => {
+const Pokelist = ({handleOnClick}) => {
 
 	const cells = PokeClasses.map((pokeClass) => <PokeCell  key={pokeClass.id} pokeClass={pokeClass} />)
 
