@@ -12,18 +12,18 @@ class App extends Component {
     super()
 
     this.state = {
-
+      pokemon: {}
     }
   }
 
   handleOnClick(id) {
-    //fetch(`http://pokeapi.co/api/v2/pokemon/${id}/`)
-    axios.get(`http://pokeapi.co/api/v2/pokemon/${id}/`)
+    
+      fetch(`http://pokeapi.co/api/v2/pokemon/${id}/`)
       .then(res => res.json())
       .then(data => {
         const pokemon = new Pokemon(data);
 
-        console.log(pokemon);
+        this.setState({ pokemon });
       })
       .catch(err => console.log(err));
   }
@@ -33,7 +33,7 @@ class App extends Component {
     return (
       <div className="App">
         <Pokelist handleOnClick={this.handleOnClick.bind(this)}/>
-        <DetailView />
+        <DetailView pokemon={this.state.pokemon}/>
       </div>
     );
   }
